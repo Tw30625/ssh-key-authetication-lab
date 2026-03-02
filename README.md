@@ -60,6 +60,46 @@ ALL issues were resolved through verification of:
 - authorized_keys integrity
 - SSH service status
 - Correct machine context
+
+- ## Implementation Walkthrough
+
+### 1. ED25519 Key Generation (Kali)
+![Key Generation](screenshots/01-key-generation.png)
+
+Generated a secure ED25519 key pair on Kali Linux for passwordless authentication.
+
+---
+
+### 2. Public Key Deployment
+![Key Deployment](screenshots/02-key-deployment.png)
+
+Deployed the public key to the Debian server using ssh-copy-id over custom port 2222.
+
+---
+
+### 3. SSH Hardening Configuration
+![SSH Hardening](screenshots/03-ssh-config-hardening.png)
+
+Modified sshd_config to:
+- Change default port to 2222
+- Disable root login
+- Disable password authentication
+- Enforce key-based authentication
+
+---
+
+### 4. SSH Service Restart & Verification
+![Service Verification](screenshots/04-ssh-service-verification.png)
+
+Restarted the SSH service and verified it is active and listening on port 2222.
+
+---
+
+### 5. Successful Passwordless Login
+![Passwordless Login](screenshots/05-passwordless-login-success.png)
+
+Validated secure remote access from Kali to Debian using key-based authentication with no password prompt.
+
 ## Skills Demonstrated
 - Linux sytem adminstration
 - SSH configuration and hardening
